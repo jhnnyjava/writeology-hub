@@ -1,6 +1,7 @@
 
 import Navigation from "@/components/Navigation";
-import { BookOpen, PenTool, FileText, Zap, GraduationCap, BookText } from "lucide-react";
+import { BookOpen, PenTool, FileText, Zap, GraduationCap, BookText, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function About() {
   return (
@@ -143,6 +144,17 @@ export default function About() {
                 Master the fundamentals of scholarly writing including research methods, citation styles, and constructing compelling arguments for academic audiences.
               </p>
             </div>
+          </div>
+          
+          {/* Course Button */}
+          <div className="mt-12 text-center animate-fade-up">
+            <Link 
+              to="/course" 
+              className="bg-primary/10 text-primary px-6 py-3 rounded-lg hover:bg-primary hover:text-white transition-colors inline-flex items-center gap-2 font-medium"
+            >
+              View All Courses
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
