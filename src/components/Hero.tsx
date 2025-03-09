@@ -1,5 +1,5 @@
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function Hero() {
@@ -31,13 +31,15 @@ export default function Hero() {
           </p>
           
           <div className="mt-8 flex flex-col sm:flex-row gap-4 animate-fade-up">
-            <Link
-              to="/enroll"
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeV0ngDVQcjr78aAWGUo2bLavshySbpfmXMrEgIwsxqoI4v7A/viewform?usp=header"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-primary hover:bg-primary-hover transition-colors"
             >
               Enroll Now for Ksh 300
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
+              <ExternalLink className="ml-2 h-4 w-4" />
+            </a>
             
             <Link
               to="/course"

@@ -35,9 +35,14 @@ export default function Navigation() {
             <Link to="/contact" className="text-secondary hover:text-primary transition-colors">
               Contact
             </Link>
-            <Link to="/enroll" className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-hover transition-colors">
+            <a 
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeV0ngDVQcjr78aAWGUo2bLavshySbpfmXMrEgIwsxqoI4v7A/viewform?usp=header" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-hover transition-colors"
+            >
               Enroll Now
-            </Link>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -70,9 +75,15 @@ export default function Navigation() {
               <Link to="/contact" className="text-secondary hover:text-primary transition-colors" onClick={toggleMenu}>
                 Contact
               </Link>
-              <Link to="/enroll" className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-hover transition-colors text-center" onClick={toggleMenu}>
+              <a 
+                href="https://docs.google.com/forms/d/e/1FAIpQLSeV0ngDVQcjr78aAWGUo2bLavshySbpfmXMrEgIwsxqoI4v7A/viewform?usp=header" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-hover transition-colors text-center" 
+                onClick={toggleMenu}
+              >
                 Enroll Now
-              </Link>
+              </a>
             </div>
           </div>
         )}
