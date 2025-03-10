@@ -5,6 +5,7 @@ import About from "@/pages/About";
 import Course from "@/pages/Course";
 import FAQ from "@/pages/FAQ";
 import NotFound from "@/pages/NotFound";
+import LearningMaterials from "@/pages/LearningMaterials";
 import "./App.css";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/course" element={<Course />} />
         <Route path="/faq" element={<FAQ />} />
+        <Route path="/learning-materials" element={<LearningMaterials />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

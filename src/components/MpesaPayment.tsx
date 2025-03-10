@@ -1,5 +1,6 @@
 
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -9,6 +10,7 @@ const MpesaPayment = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\D/g, "");
@@ -33,13 +35,19 @@ const MpesaPayment = () => {
     // Simulate payment processing
     setTimeout(() => {
       toast({
-        title: "Payment initiated",
-        description: "Please check your phone for the M-Pesa prompt to complete the payment of Ksh 300.",
+        title: "Payment successful",
+        description: "Your payment has been verified. You now have access to the learning materials.",
       });
+      
+      // Store payment verification status in localStorage
+      localStorage.setItem("paymentStatus", "verified");
+      
+      // Redirect to learning materials page
       setIsSubmitting(false);
+      navigate("/learning-materials");
       
       // In a real implementation, you would make an API call to your backend
-      // to initiate the M-Pesa payment process
+      // to initiate the M-Pesa payment process and handle the callback
     }, 1500);
   };
 
@@ -51,7 +59,7 @@ const MpesaPayment = () => {
             Complete Your Enrollment
           </h2>
           <p className="max-w-[700px] text-gray-600 md:text-xl">
-            Pay Ksh 300 via M-Pesa to secure your spot in our 2-week writing program.
+            Pay Ksh 300 via M-Pesa to secure your spot in our 2-week writing program and gain access to all learning materials.
           </p>
         </div>
 
@@ -97,7 +105,7 @@ const MpesaPayment = () => {
             </CardContent>
             <CardFooter className="flex flex-col space-y-2 border-t pt-4">
               <p className="text-sm text-gray-500">
-                After clicking the button, you will receive an M-Pesa prompt on your phone.
+                After clicking the button, you will receive an M-Pesa prompt on your phone. Once payment is confirmed, you'll get immediate access to all course materials.
               </p>
               <div className="flex items-center justify-center space-x-2">
                 <img 
