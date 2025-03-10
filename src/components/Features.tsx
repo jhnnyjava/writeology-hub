@@ -1,6 +1,6 @@
 
 import React from "react";
-import { BookOpen, Users, Calendar, Certificate, Clock, Shield } from "lucide-react";
+import { BookOpen, Users, Calendar, Award, Clock, Shield } from "lucide-react";
 
 const features = [
   {
@@ -19,7 +19,7 @@ const features = [
     description: "Kickstart your learning journey with a one-time live orientation session where you'll meet instructors and fellow students."
   },
   {
-    icon: <Certificate className="h-10 w-10 text-primary" />,
+    icon: <Award className="h-10 w-10 text-primary" />,
     title: "Course Certification",
     description: "Receive a professional certificate upon course completion to showcase your newly acquired skills to potential employers."
   },
@@ -52,7 +52,7 @@ const Features = () => {
           {features.map((feature, index) => (
             <div 
               key={index} 
-              className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-sm border border-neutral-200 hover:border-primary hover-lift transition-all"
+              className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-sm border border-neutral-200 hover:border-primary hover:shadow-md transition-all"
             >
               <div className="bg-primary/10 p-3 rounded-full mb-4">
                 {feature.icon}
