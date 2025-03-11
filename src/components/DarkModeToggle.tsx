@@ -26,7 +26,7 @@ const DarkModeToggle = () => {
   return (
     <button
       onClick={() => setDarkMode(!darkMode)}
-      className="flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 dark:bg-neutral-800 text-secondary dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+      className="flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 dark:bg-primary/20 text-secondary dark:text-primary hover:bg-neutral-200 dark:hover:bg-primary/30 transition-colors"
       aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
     >
       {darkMode ? <Sun size={18} /> : <Moon size={18} />}
