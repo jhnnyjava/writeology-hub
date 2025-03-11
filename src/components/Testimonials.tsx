@@ -2,6 +2,7 @@
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Quote } from "lucide-react";
 
 const testimonials = [
   {
@@ -40,33 +41,38 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section className="w-full py-16 bg-neutral-100">
+    <section className="w-full py-16 bg-neutral-100 dark:bg-secondary/40">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-10">
-          <h2 className="text-3xl font-bold font-display tracking-tight sm:text-4xl md:text-5xl">
+          <h2 className="text-3xl font-bold font-display tracking-tight sm:text-4xl md:text-5xl dark:text-white">
             What Our Students Say
           </h2>
-          <p className="max-w-[700px] text-gray-600 md:text-xl">
+          <p className="max-w-[700px] text-gray-600 dark:text-gray-300 md:text-xl">
             Hear from students who have transformed their careers through our online learning platform.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {testimonials.map((testimonial) => (
-            <Card key={testimonial.id} className="h-full">
-              <CardHeader className="pb-2">
+            <Card key={testimonial.id} className="h-full hover-lift overflow-hidden group dark:bg-secondary/70 dark:border-neutral-700">
+              <CardHeader className="pb-2 relative">
                 <div className="flex items-center space-x-4">
-                  <Avatar>
+                  <Avatar className="border-2 border-primary">
                     <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-                    <AvatarFallback>{testimonial.initials}</AvatarFallback>
+                    <AvatarFallback className="bg-primary text-white">{testimonial.initials}</AvatarFallback>
                   </Avatar>
                   <div>
-                    <CardTitle className="text-base font-medium">{testimonial.name}</CardTitle>
-                    <p className="text-sm text-gray-500">{testimonial.role}</p>
+                    <CardTitle className="text-base font-medium dark:text-white">{testimonial.name}</CardTitle>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{testimonial.role}</p>
                   </div>
+                </div>
+                <div className="absolute top-3 right-3 text-neutral-300 dark:text-neutral-600 opacity-70">
+                  <Quote size={24} />
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-700 italic">"{testimonial.quote}"</p>
+                <p className="text-gray-700 dark:text-gray-300 italic relative">
+                  "{testimonial.quote}"
+                </p>
               </CardContent>
             </Card>
           ))}
