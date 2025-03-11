@@ -27,10 +27,6 @@ export default function Navigation() {
             <Link to="/course" className="text-secondary dark:text-neutral-200 hover:text-primary dark:hover:text-primary transition-colors">
               Course
             </Link>
-            <Link to="/testimonials" className="text-secondary dark:text-neutral-200 hover:text-primary dark:hover:text-primary transition-colors relative group">
-              <span>Testimonials</span>
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
-            </Link>
             <Link to="/faq" className="text-secondary dark:text-neutral-200 hover:text-primary dark:hover:text-primary transition-colors">
               FAQ
             </Link>
@@ -73,9 +69,6 @@ export default function Navigation() {
               </Link>
               <Link to="/course" className="text-secondary dark:text-white hover:text-primary transition-colors" onClick={toggleMenu}>
                 Course
-              </Link>
-              <Link to="/testimonials" className="text-secondary dark:text-white hover:text-primary transition-colors" onClick={toggleMenu}>
-                Testimonials
               </Link>
               <Link to="/faq" className="text-secondary dark:text-white hover:text-primary transition-colors" onClick={toggleMenu}>
                 FAQ
