@@ -7,6 +7,7 @@ import { BookOpen, FileText, Video, Download, Lock } from "lucide-react";
 
 const LearningMaterials = () => {
   const [isPaymentVerified, setIsPaymentVerified] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,31 +18,53 @@ const LearningMaterials = () => {
     } else {
       // If not verified, redirect to homepage
       navigate("/");
+      return;
+    }
+
+    // Check if user is authenticated
+    const userData = localStorage.getItem("userData");
+    const accessToken = localStorage.getItem("accessToken");
+    
+    if (userData && accessToken) {
+      const parsed = JSON.parse(userData);
+      if (parsed.isAuthenticated) {
+        setIsAuthenticated(true);
+      } else {
+        // If payment is verified but not authenticated, redirect to login
+        navigate("/login");
+      }
+    } else {
+      // If payment is verified but not authenticated, redirect to login
+      navigate("/login");
     }
   }, [navigate]);
 
-  if (!isPaymentVerified) {
+  if (!isPaymentVerified || !isAuthenticated) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <Card className="w-[350px]">
           <CardHeader>
             <CardTitle className="text-center">Access Restricted</CardTitle>
             <CardDescription className="text-center">
-              Payment verification required
+              {!isPaymentVerified 
+                ? "Payment verification required" 
+                : "Authentication required"}
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col items-center justify-center p-6">
             <Lock className="h-16 w-16 text-gray-400 mb-4" />
             <p className="text-center">
-              You need to complete payment to access learning materials.
+              {!isPaymentVerified 
+                ? "You need to complete payment to access learning materials."
+                : "You need to log in to access learning materials."}
             </p>
           </CardContent>
           <CardFooter className="flex justify-center">
             <button
-              onClick={() => navigate("/")}
+              onClick={() => navigate(!isPaymentVerified ? "/" : "/login")}
               className="bg-primary text-white px-4 py-2 rounded"
             >
-              Return to Homepage
+              {!isPaymentVerified ? "Return to Homepage" : "Go to Login"}
             </button>
           </CardFooter>
         </Card>
@@ -64,6 +87,15 @@ const LearningMaterials = () => {
               Welcome to your course materials! Below you'll find all the resources
               you need to succeed in our writing program. If you have any questions,
               please reach out to our support team.
+            </p>
+            <p>
+              You can also access a more comprehensive dashboard of courses by visiting your 
+              <button 
+                onClick={() => navigate("/dashboard")}
+                className="text-primary font-medium hover:underline ml-1"
+              >
+                course dashboard
+              </button>.
             </p>
           </div>
           

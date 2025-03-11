@@ -36,15 +36,15 @@ const MpesaPayment = () => {
     setTimeout(() => {
       toast({
         title: "Payment successful",
-        description: "Your payment has been verified. You now have access to the learning materials.",
+        description: "Your payment has been verified. Create an account to access the course materials.",
       });
       
       // Store payment verification status in localStorage
       localStorage.setItem("paymentStatus", "verified");
       
-      // Redirect to learning materials page
+      // Redirect to signup page instead of learning materials
       setIsSubmitting(false);
-      navigate("/learning-materials");
+      navigate("/signup");
       
       // In a real implementation, you would make an API call to your backend
       // to initiate the M-Pesa payment process and handle the callback
@@ -105,7 +105,7 @@ const MpesaPayment = () => {
             </CardContent>
             <CardFooter className="flex flex-col space-y-2 border-t pt-4">
               <p className="text-sm text-gray-500">
-                After clicking the button, you will receive an M-Pesa prompt on your phone. Once payment is confirmed, you'll get immediate access to all course materials.
+                After payment confirmation, you'll create an account to access all course materials.
               </p>
               <div className="flex items-center justify-center space-x-2">
                 <img 
