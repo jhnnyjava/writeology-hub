@@ -136,7 +136,7 @@ export default function FAQ() {
           <div className="mt-12 text-center animate-fade-up">
             <p className="mb-4 text-secondary/80">Still have questions? We're here to help!</p>
             <a 
-              href="mailto:support@writeologyhub.com" 
+              href="mailto:WriteologyHub@gmail.com" 
               className="text-primary hover:underline font-medium"
             >
               Contact Us
