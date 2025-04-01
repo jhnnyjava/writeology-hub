@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
-import { Phone } from "lucide-react";
+import { Phone, CreditCard } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -52,26 +52,46 @@ const MpesaPayment = () => {
   };
 
   return (
-    <section className="w-full py-12 md:py-20 bg-white">
+    <section className="w-full py-12 md:py-20 bg-white dark:bg-secondary/95">
       <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-8">
-          <h2 className="text-3xl font-bold font-display tracking-tight sm:text-4xl md:text-5xl">
+          <h2 className="text-3xl font-bold font-display tracking-tight sm:text-4xl md:text-5xl dark:text-white">
             Complete Your Enrollment
           </h2>
-          <p className="max-w-[700px] text-gray-600 md:text-xl">
+          <p className="max-w-[700px] text-gray-600 dark:text-gray-300 md:text-xl">
             Pay Ksh 300 via M-Pesa to secure your spot in our 2-week writing program and gain access to all learning materials.
           </p>
         </div>
 
         <div className="max-w-md mx-auto">
-          <Card>
+          <Card className="dark:bg-secondary dark:border-gray-700">
             <CardHeader>
-              <CardTitle className="text-xl font-display text-secondary">M-Pesa Payment</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-xl font-display text-secondary dark:text-white">M-Pesa Payment</CardTitle>
+              <CardDescription className="dark:text-gray-300">
                 Enter your phone number to receive an M-Pesa payment prompt
               </CardDescription>
             </CardHeader>
             <CardContent>
+              <div className="mb-6 bg-gray-50 dark:bg-gray-800 p-4 rounded-md border border-gray-200 dark:border-gray-700">
+                <div className="flex items-center mb-2">
+                  <CreditCard className="h-5 w-5 text-primary mr-2" />
+                  <h3 className="font-medium text-secondary dark:text-white">Payment Information</h3>
+                </div>
+                <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                  <li className="flex justify-between">
+                    <span>Paybill Number:</span>
+                    <span className="font-bold">247247</span>
+                  </li>
+                  <li className="flex justify-between">
+                    <span>Account Number:</span>
+                    <span className="font-bold">0705236999</span>
+                  </li>
+                  <li className="flex justify-between">
+                    <span>Amount:</span>
+                    <span className="font-bold">Ksh 300</span>
+                  </li>
+                </ul>
+              </div>
               <form onSubmit={handleSubmit}>
                 <div className="space-y-4">
                   <div className="relative">
@@ -81,7 +101,7 @@ const MpesaPayment = () => {
                     <input
                       type="text"
                       className={cn(
-                        "pl-10 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary",
+                        "pl-10 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-800 dark:border-gray-700 dark:text-white",
                         phoneNumber.length === 10 && "border-green-500"
                       )}
                       placeholder="e.g. 07XX XXX XXX"
@@ -89,9 +109,6 @@ const MpesaPayment = () => {
                       onChange={handlePhoneChange}
                       maxLength={10}
                     />
-                  </div>
-                  <div className="text-sm text-gray-500">
-                    <p>Payment amount: <span className="font-bold">Ksh 300</span></p>
                   </div>
                   <button
                     type="submit"
@@ -103,8 +120,8 @@ const MpesaPayment = () => {
                 </div>
               </form>
             </CardContent>
-            <CardFooter className="flex flex-col space-y-2 border-t pt-4">
-              <p className="text-sm text-gray-500">
+            <CardFooter className="flex flex-col space-y-2 border-t border-gray-200 dark:border-gray-700 pt-4">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
                 After payment confirmation, you'll create an account to access all course materials.
               </p>
               <div className="flex items-center justify-center space-x-2">
@@ -117,8 +134,8 @@ const MpesaPayment = () => {
             </CardFooter>
           </Card>
           
-          <div className="mt-8 text-center text-sm text-gray-500">
-            <p>Having trouble with payment? Contact us at support@writeologyhub.com</p>
+          <div className="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">
+            <p>Having trouble with payment? Contact us at WriteologyHub@gmail.com</p>
           </div>
         </div>
       </div>
