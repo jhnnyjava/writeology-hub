@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
-import { Phone, CreditCard } from "lucide-react";
+import { Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -32,7 +32,15 @@ const MpesaPayment = () => {
 
     setIsSubmitting(true);
 
-    // Simulate payment processing
+    // Simulate STK push payment process
+    // In a real implementation, you would make an API call to your backend
+    // which would then use the M-Pesa API to initiate the STK push
+    toast({
+      title: "Payment initiated",
+      description: "Please check your phone for the M-Pesa payment prompt and enter your PIN to complete payment.",
+    });
+
+    // Simulate payment processing with a delay
     setTimeout(() => {
       toast({
         title: "Payment successful",
@@ -42,13 +50,13 @@ const MpesaPayment = () => {
       // Store payment verification status in localStorage
       localStorage.setItem("paymentStatus", "verified");
       
-      // Redirect to signup page instead of learning materials
+      // Send confirmation email (simulated)
+      console.log(`Sending payment confirmation email to user with phone: ${phoneNumber}`);
+      
+      // Redirect to signup page
       setIsSubmitting(false);
       navigate("/signup");
-      
-      // In a real implementation, you would make an API call to your backend
-      // to initiate the M-Pesa payment process and handle the callback
-    }, 1500);
+    }, 3000);
   };
 
   return (
@@ -72,26 +80,6 @@ const MpesaPayment = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="mb-6 bg-gray-50 dark:bg-gray-800 p-4 rounded-md border border-gray-200 dark:border-gray-700">
-                <div className="flex items-center mb-2">
-                  <CreditCard className="h-5 w-5 text-primary mr-2" />
-                  <h3 className="font-medium text-secondary dark:text-white">Payment Information</h3>
-                </div>
-                <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                  <li className="flex justify-between">
-                    <span>Paybill Number:</span>
-                    <span className="font-bold">247247</span>
-                  </li>
-                  <li className="flex justify-between">
-                    <span>Account Number:</span>
-                    <span className="font-bold">0705236999</span>
-                  </li>
-                  <li className="flex justify-between">
-                    <span>Amount:</span>
-                    <span className="font-bold">Ksh 300</span>
-                  </li>
-                </ul>
-              </div>
               <form onSubmit={handleSubmit}>
                 <div className="space-y-4">
                   <div className="relative">
@@ -109,6 +97,9 @@ const MpesaPayment = () => {
                       onChange={handlePhoneChange}
                       maxLength={10}
                     />
+                    <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                      You'll receive a payment prompt on this number
+                    </p>
                   </div>
                   <button
                     type="submit"
@@ -122,7 +113,7 @@ const MpesaPayment = () => {
             </CardContent>
             <CardFooter className="flex flex-col space-y-2 border-t border-gray-200 dark:border-gray-700 pt-4">
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                After payment confirmation, you'll create an account to access all course materials.
+                After payment confirmation, you'll create an account to access all course materials and receive a confirmation email.
               </p>
               <div className="flex items-center justify-center space-x-2">
                 <img 
